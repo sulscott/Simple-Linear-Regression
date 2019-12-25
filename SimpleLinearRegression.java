@@ -1,5 +1,3 @@
-package data_science;
-
 import java.util.List;
 
 /**
@@ -117,7 +115,7 @@ public class SimpleLinearRegression {
     }
 
 //    public static void main(String[] args) {
-//        SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv");
+//        SimpleLinearRegression test = new SimpleLinearRegression("sample_test_score_data.csv");
 //        System.out.println(test.data);
 //        System.out.println(test.getSlope(test.xData, test.yData));
 //        System.out.println(test.getYintercept(test.xData, test.yData));

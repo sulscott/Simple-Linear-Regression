@@ -1,3 +1,5 @@
+package datascience;
+
 import java.util.List;
 
 /**
@@ -23,14 +25,13 @@ import java.util.List;
  * 2. https://towardsdatascience.com/linear-regression-detailed-view-ea73175f6e86
  */
 public class SimpleLinearRegression {
-
-    private CSVParser parser = new CSVParser();
+    
     private List<List<Double>> data;
     private List<Double> xData;
     private List<Double> yData;
 
 
-    public SimpleLinearRegression(String fileName) {
+    public SimpleLinearRegression(String fileName, CSVParser parser) {
         data = parser.parse(fileName);
         this.xData = data.get(0);
         this.yData = data.get(1);
@@ -114,11 +115,12 @@ public class SimpleLinearRegression {
         return yIntercept;
     }
 
-//    public static void main(String[] args) {
-//        SimpleLinearRegression test = new SimpleLinearRegression("sample_test_score_data.csv");
-//        System.out.println(test.data);
-//        System.out.println(test.getSlope(test.xData, test.yData));
-//        System.out.println(test.getYintercept(test.xData, test.yData));
-//        System.out.println(test.predictValue(80.0));
-//    }
+//     public static void main(String[] args) {
+//         CSVParser parser = new CSVParser();
+//         SimpleLinearRegression test = new SimpleLinearRegression("test_score_data.csv", parser);
+//         System.out.println(test.data);
+//         System.out.println(test.getSlope(test.xData, test.yData));
+//         System.out.println(test.getYintercept(test.xData, test.yData));
+//         System.out.println(test.predictValue(80.0));
+    }
 }

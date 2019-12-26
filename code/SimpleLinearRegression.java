@@ -1,6 +1,6 @@
 package datascience;
 
-    import java.util.List;
+import java.util.List;
 
 /**
  * This class demonstrates basic simple linear regression.
@@ -103,12 +103,12 @@ public class SimpleLinearRegression {
         return yIntercept;
     }
 
-//    public static void main(String[] args) {
-//        CSVParser parser = new CSVParser();
-//        SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
-//        System.out.println(test.data);
-//        System.out.println(test.getSlope());
-//        System.out.println(test.getYintercept());
-//        System.out.println(test.predictValue(80.0));
-//    }
+//     public static void main(String[] args) {
+//         CSVParser parser = new CSVParser();
+//         SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
+//         System.out.println(test.data);
+//         System.out.println(test.getSlope());
+//         System.out.println(test.getYintercept());
+//         System.out.println(test.predictValue(80.0));
+//     }
 }

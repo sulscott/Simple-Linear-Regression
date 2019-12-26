@@ -25,7 +25,7 @@ import java.util.List;
  * 2. https://towardsdatascience.com/linear-regression-detailed-view-ea73175f6e86
  */
 public class SimpleLinearRegression {
-    
+
     private List<List<Double>> data;
     private List<Double> xData;
     private List<Double> yData;
@@ -56,11 +56,8 @@ public class SimpleLinearRegression {
      * @return Double of the mean.
      */
     public Double getXBar(List<Double> xData) {
-        Double result = Double.valueOf("0");
-        for (int i = 0; i < xData.size(); i++) {
-            result += xData.get(i);
-        }
-        return result / xData.size();
+        Double result = xData.stream().mapToDouble(val -> val).average().orElse(0.0);
+        return result;
     }
 
     /**
@@ -69,11 +66,8 @@ public class SimpleLinearRegression {
      * @return Double of the mean.
      */
     public Double getYBar(List<Double> yData) {
-        Double result = Double.valueOf("0");
-        for (int i = 0; i < yData.size(); i++) {
-            result += yData.get(i);
-        }
-        return result / yData.size();
+        Double result = yData.stream().mapToDouble(val -> val).average().orElse(0.0);
+        return result;
     }
 
     /**
@@ -115,12 +109,12 @@ public class SimpleLinearRegression {
         return yIntercept;
     }
 
-//     public static void main(String[] args) {
-//         CSVParser parser = new CSVParser();
-//         SimpleLinearRegression test = new SimpleLinearRegression("test_score_data.csv", parser);
-//         System.out.println(test.data);
-//         System.out.println(test.getSlope(test.xData, test.yData));
-//         System.out.println(test.getYintercept(test.xData, test.yData));
-//         System.out.println(test.predictValue(80.0));
+    public static void main(String[] args) {
+        CSVParser parser = new CSVParser();
+        SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
+        System.out.println(test.data);
+        System.out.println(test.getSlope(test.xData, test.yData));
+        System.out.println(test.getYintercept(test.xData, test.yData));
+        System.out.println(test.predictValue(80.0));
     }
 }

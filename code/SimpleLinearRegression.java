@@ -46,26 +46,24 @@ public class SimpleLinearRegression {
      *         variable {@code x}
      */
     public Double predictValue(Double x) {
-        Double y = (getSlope(xData, yData) * x) + getYintercept(xData, yData);
+        Double y = (getSlope() * x) + getYintercept();
         return y;
     }
 
     /**
      * Returns the mean of the x values determined by the input file.
-     * @param data
      * @return Double of the mean.
      */
-    public Double getXBar(List<List<Double>> data) {
+    public Double getXBar() {
         Double result = data.get(0).stream().mapToDouble(val -> val).average().orElse(0.0);
         return result;
     }
 
     /**
      * Returns the mean of the y values determined by the input file.
-     * @param data
      * @return Double of the mean.
      */
-    public Double getYBar(List<List<Double>> data) {
+    public Double getYBar() {
         Double result = data.get(1).stream().mapToDouble(val -> val).average().orElse(0.0);
         return result;
     }
@@ -73,18 +71,16 @@ public class SimpleLinearRegression {
     /**
      * Gets the slope of the data given x and y coordinates
      * that that minimizes the sum of squared residuals of the linear regression model.
-     * @param xData
-     * @param yData
      * @return Slope of the line of best fit.
      */
-    public Double getSlope(List<Double> xData, List<Double> yData) {
+    public Double getSlope() {
         if (xData.size() != yData.size()) {
             System.out.println("Requires input Lists to be the same size.");
             throw new IllegalArgumentException();
         }
 
-        Double xBar = getXBar(data);
-        Double yBar = getYBar(data);
+        Double xBar = getXBar();
+        Double yBar = getYBar();
         Double numeratorSum = Double.valueOf("0");
         Double denominatorSum = Double.valueOf("0");
         for (int i = 0; i < xData.size(); i++) {
@@ -96,25 +92,23 @@ public class SimpleLinearRegression {
 
     /**
      * Returns the y-intercept of the line of best fit.
-     * @param xData
-     * @param yData
      * @return the y-intercept of the line of best fit.
      */
-    public Double getYintercept(List<Double> xData, List<Double> yData) {
-        Double xBar = getXBar(data);
-        Double yBar = getYBar(data);
-        Double slope = getSlope(xData, yData);
+    public Double getYintercept() {
+        Double xBar = getXBar();
+        Double yBar = getYBar();
+        Double slope = getSlope();
         Double yIntercept = yBar - (slope * xBar);
 
         return yIntercept;
     }
 
-//     public static void main(String[] args) {
-//         CSVParser parser = new CSVParser();
-//         SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
-//         System.out.println(test.data);
-//         System.out.println(test.getSlope(test.xData, test.yData));
-//         System.out.println(test.getYintercept(test.xData, test.yData));
-//         System.out.println(test.predictValue(80.0));
-    }
+//    public static void main(String[] args) {
+//        CSVParser parser = new CSVParser();
+//        SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
+//        System.out.println(test.data);
+//        System.out.println(test.getSlope());
+//        System.out.println(test.getYintercept());
+//        System.out.println(test.predictValue(80.0));
+//    }
 }

@@ -1,6 +1,6 @@
 package datascience;
 
-import java.util.List;
+    import java.util.List;
 
 /**
  * This class demonstrates basic simple linear regression.
@@ -52,21 +52,21 @@ public class SimpleLinearRegression {
 
     /**
      * Returns the mean of the x values determined by the input file.
-     * @param xData
+     * @param data
      * @return Double of the mean.
      */
-    public Double getXBar(List<Double> xData) {
-        Double result = xData.stream().mapToDouble(val -> val).average().orElse(0.0);
+    public Double getXBar(List<List<Double>> data) {
+        Double result = data.get(0).stream().mapToDouble(val -> val).average().orElse(0.0);
         return result;
     }
 
     /**
      * Returns the mean of the y values determined by the input file.
-     * @param yData
+     * @param data
      * @return Double of the mean.
      */
-    public Double getYBar(List<Double> yData) {
-        Double result = yData.stream().mapToDouble(val -> val).average().orElse(0.0);
+    public Double getYBar(List<List<Double>> data) {
+        Double result = data.get(1).stream().mapToDouble(val -> val).average().orElse(0.0);
         return result;
     }
 
@@ -83,8 +83,8 @@ public class SimpleLinearRegression {
             throw new IllegalArgumentException();
         }
 
-        Double xBar = getXBar(xData);
-        Double yBar = getYBar(yData);
+        Double xBar = getXBar(data);
+        Double yBar = getYBar(data);
         Double numeratorSum = Double.valueOf("0");
         Double denominatorSum = Double.valueOf("0");
         for (int i = 0; i < xData.size(); i++) {
@@ -101,20 +101,20 @@ public class SimpleLinearRegression {
      * @return the y-intercept of the line of best fit.
      */
     public Double getYintercept(List<Double> xData, List<Double> yData) {
-        Double xBar = getXBar(xData);
-        Double yBar = getYBar(yData);
+        Double xBar = getXBar(data);
+        Double yBar = getYBar(data);
         Double slope = getSlope(xData, yData);
         Double yIntercept = yBar - (slope * xBar);
 
         return yIntercept;
     }
 
-    public static void main(String[] args) {
-        CSVParser parser = new CSVParser();
-        SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
-        System.out.println(test.data);
-        System.out.println(test.getSlope(test.xData, test.yData));
-        System.out.println(test.getYintercept(test.xData, test.yData));
-        System.out.println(test.predictValue(80.0));
+//     public static void main(String[] args) {
+//         CSVParser parser = new CSVParser();
+//         SimpleLinearRegression test = new SimpleLinearRegression("/Users/sulscott/Documents/sample_data/sample_test_score_data.csv", parser);
+//         System.out.println(test.data);
+//         System.out.println(test.getSlope(test.xData, test.yData));
+//         System.out.println(test.getYintercept(test.xData, test.yData));
+//         System.out.println(test.predictValue(80.0));
     }
 }
